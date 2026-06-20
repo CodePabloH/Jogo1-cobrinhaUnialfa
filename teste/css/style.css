@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+  font-family: 'Share Tech Mono', monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  gap: 20px;
+}
+
+a { text-decoration: none; }
+
+/* ══════════════════════════════
+   TELA INICIAL (MENU)
+══════════════════════════════ */
+#tela-inicial {
+  background-color: #111111;
+  border: 2px solid #2a2a2a;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.menu-titulo {
+  padding: 32px 48px 20px;
+  text-align: center;
+  border-bottom: 1px solid #1e1e1e;
+}
+
+.menu-titulo h1 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  color: #3ddc4a;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(61,220,74,0.5), 0 0 24px rgba(61,220,74,0.2);
+}
+
+.menu-meio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.conteudo-menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 28px 40px;
+  text-align: center;
+}
+
+.melhor-pontuacao {
+  font-size: 0.95rem;
+  color: #cccccc;
+  letter-spacing: 1px;
+}
+
+.melhor-pontuacao span {
+  font-family: 'Press Start 2P', monospace;
+  color: #3ddc4a;
+}
+
+.label-dificuldade {
+  font-size: 0.8rem;
+  color: #888888;
+}
+
+#select-dificuldade {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 2px solid #333333;
+  border-radius: 3px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.instrucao {
+  font-size: 0.75rem;
+  color: #555555;
+  letter-spacing: 0.5px;
+}
+
+#btn-iniciar {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #0d0d0d;
+  background-color: #3ddc4a;
+  border: none;
+  border-radius: 3px;
+  padding: 15px 32px;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s, box-shadow 0.15s;
+  box-shadow: 0 4px 0 #1e8a28, 0 0 14px rgba(61,220,74,0.3);
+}
+#btn-iniciar:hover { background-color: #50f060; box-shadow: 0 4px 0 #1e8a28, 0 0 24px rgba(61,220,74,0.5); }
+#btn-iniciar:active { transform: translateY(3px); box-shadow: 0 1px 0 #1e8a28; }
+
+#area-cobra {
+  width: 220px;
+  height: 180px;
+  flex-shrink: 0;
+  border-left: 1px solid #1e1e1e;
+}
+
+#canvas-menu {
+  display: block;
+  image-rendering: pixelated;
+  background: transparent;
+}
+
+/* histórico das últimas partidas, fica embaixo do menu */
+.historico-pontos {
+  width: 100%;
+  border-top: 1px solid #1e1e1e;
+  padding: 14px 40px 22px;
+}
+
+.historico-pontos h2 {
+  font-size: 0.75rem;
+  color: #555555;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+#lista-historico {
+  list-style: none;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+#lista-historico li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background-color: #1a1a1a;
+  border-radius: 3px;
+  color: #cccccc;
+}
+
+#lista-historico li span:last-child {
+  color: #3ddc4a;
+  font-weight: bold;
+}
+
+/* ══════════════════════════════
+   TELA DE JOGO
+══════════════════════════════ */
+#tela-jogo {
+  background-color: #111111;
+  border: 2px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.barra-topo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 4px 12px 4px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge-jogando {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1.5px;
+  color: #3ddc4a;
+  border: 2px solid #3ddc4a;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.info-topo {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  font-size: 0.8rem;
+  color: #aaaaaa;
+  flex-wrap: wrap;
+}
+
+.info-topo b {
+  color: #3ddc4a;
+}
+
+#area-canvas { line-height: 0; }
+
+#canvas {
+  border: 2px solid #2a2a2a;
+  background-color: #0d0d0d;
+  display: block;
+  image-rendering: pixelated;
+}
+
+/* ══════════════════════════════
+   GAME OVER / VITÓRIA
+   fica por cima de tudo, igual uma tela de "pausa"
+══════════════════════════════ */
+#tela-gameover {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(13, 13, 13, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.painel-gameover {
+  background-color: #111111;
+  border: 2px solid #e03030;
+  border-radius: 4px;
+  width: 90%;
+  max-width: 436px;
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  box-shadow: 0 0 35px rgba(224,48,48,0.35);
+}
+
+/* quando ganha, troca a borda e o brilho pra verde */
+.painel-gameover.vitoria {
+  border-color: #3ddc4a;
+  box-shadow: 0 0 35px rgba(61,220,74,0.35);
+}
+
+#tela-gameover h1 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  color: #e03030;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(224,48,48,0.6), 0 0 22px rgba(224,48,48,0.25);
+  animation: piscar 1.2s ease-in-out infinite alternate;
+}
+
+.painel-gameover.vitoria h1 {
+  color: #3ddc4a;
+  text-shadow: 0 0 8px rgba(61,220,74,0.6), 0 0 22px rgba(61,220,74,0.25);
+}
+
+@keyframes piscar { from { opacity: 1; } to { opacity: 0.6; } }
+
+#tela-gameover p {
+  font-size: 0.85rem;
+  color: #cccccc;
+  letter-spacing: 0.5px;
+}
+
+#pontuacao-final {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 2rem;
+  color: #e03030;
+  text-shadow: 0 0 10px rgba(224,48,48,0.5);
+}
+
+.painel-gameover.vitoria #pontuacao-final {
+  color: #3ddc4a;
+  text-shadow: 0 0 10px rgba(61,220,74,0.5);
+}
+
+.botoes-gameover {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+#btn-jogar-novamente {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #cc2222;
+  border: none;
+  border-radius: 3px;
+  padding: 14px 12px;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.15s, transform 0.1s, box-shadow 0.15s;
+  box-shadow: 0 4px 0 #7a0d0d, 0 0 10px rgba(204,34,34,0.3);
+}
+#btn-jogar-novamente:hover { background-color: #e03535; box-shadow: 0 4px 0 #7a0d0d, 0 0 20px rgba(224,53,53,0.5); }
+#btn-jogar-novamente:active { transform: translateY(3px); box-shadow: 0 1px 0 #7a0d0d; }
+
+.painel-gameover.vitoria #btn-jogar-novamente {
+  background-color: #2fa83a;
+  box-shadow: 0 4px 0 #1e8a28, 0 0 10px rgba(61,220,74,0.3);
+}
+.painel-gameover.vitoria #btn-jogar-novamente:hover {
+  background-color: #3ddc4a;
+  box-shadow: 0 4px 0 #1e8a28, 0 0 20px rgba(61,220,74,0.5);
+}
+
+#btn-voltar-menu {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #cccccc;
+  background-color: #1e1e1e;
+  border: 2px solid #333333;
+  border-radius: 3px;
+  padding: 12px 12px;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.15s, border-color 0.15s, transform 0.1s;
+}
+#btn-voltar-menu:hover { background-color: #2a2a2a; border-color: #555555; color: #ffffff; }
+#btn-voltar-menu:active { transform: translateY(2px); }
+
+.dica-enter {
+  font-size: 0.55rem !important;
+  color: #444444 !important;
+  letter-spacing: 1px !important;
+}
+
+/* ── RESPONSIVO ── */
+@media (max-width: 560px) {
+  .menu-titulo { padding: 24px 20px 16px; }
+  .menu-meio { flex-direction: column; }
+  #area-cobra { width: 100%; height: 140px; border-left: none; border-top: 1px solid #1e1e1e; }
+  .conteudo-menu { padding: 20px 16px; }
+}
+
+@media (max-width: 480px) {
+  .botoes-gameover { flex-direction: column; }
+}

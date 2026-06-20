@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jogo da Cobrinha</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div id="tela-inicial">
+
+    <div class="menu-titulo">
+      <h1>JOGO DA COBRINHA</h1>
+    </div>
+
+    <div class="menu-meio">
+
+      <div class="conteudo-menu">
+        <p class="melhor-pontuacao">Melhor Pontuação: <span id="melhor-pontuacao">0</span></p>
+
+        <!-- seletor de dificuldade, simples -->
+        <p class="label-dificuldade">Escolha a dificuldade:</p>
+        <select id="select-dificuldade">
+          <option value="200">Fácil</option>
+          <option value="150" selected>Médio</option>
+          <option value="90">Difícil</option>
+        </select>
+
+        <a href="jogo.html" id="link-iniciar">
+          <button id="btn-iniciar">INICIAR JOGO</button>
+        </a>
+
+        <p class="instrucao">Use as setas do teclado para mover a cobrinha</p>
+      </div>
+
+      <div id="area-cobra">
+        <canvas id="canvas-menu"></canvas>
+      </div>
+
+    </div>
+
+    <!-- histórico com as últimas pontuações que o jogador fez -->
+    <div class="historico-pontos">
+      <h2>Últimas partidas</h2>
+      <ul id="lista-historico"></ul>
+    </div>
+
+  </div>
+
+  <script src="../js/menu.js"></script>
+</body>
+</html>

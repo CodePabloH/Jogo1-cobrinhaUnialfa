@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jogo da Cobrinha</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div id="tela-jogo">
+    <div class="barra-topo">
+      <span class="badge-jogando">▶ JOGANDO</span>
+
+      <div class="info-topo">
+        <span>Nível: <b id="nivel">Médio</b></span>
+        <span>Tempo: <b id="tempo">60</b></span>
+        <span>Tentativa: <b id="tentativas">1</b></span>
+        <span>Pontos: <b id="pontuacao">0</b></span>
+      </div>
+    </div>
+
+    <div id="area-canvas">
+      <canvas id="canvas" width="400" height="400"></canvas>
+    </div>
+  </div>
+
+  <div id="tela-gameover" style="display:none;">
+    <div class="painel-gameover" id="painel-gameover">
+      <h1 id="titulo-resultado">GAME OVER</h1>
+      <p>Sua pontuação:</p>
+      <span id="pontuacao-final">0</span>
+      <p>Tentativa número <span id="tentativas-final">1</span></p>
+      <div class="botoes-gameover">
+        <button id="btn-jogar-novamente">▶ JOGAR NOVAMENTE</button>
+        <button id="btn-voltar-menu" onclick="window.location.href='index.html'">← MENU</button>
+      </div>
+      <p class="dica-enter">ENTER = jogar novamente</p>
+    </div>
+  </div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
